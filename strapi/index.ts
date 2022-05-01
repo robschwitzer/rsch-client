@@ -42,7 +42,6 @@ export async function fetchAPI<T>(
   const requestUrl: string = `${getStrapiURL(
     `/api${path}${queryString ? `?${queryString}` : ""}`
   )}`;
-console.log('R: ', requestUrl);
 
   const response: Response = await fetch(requestUrl, mergedOptions);
 
