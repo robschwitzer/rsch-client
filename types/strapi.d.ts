@@ -79,39 +79,80 @@ export interface IStrapiMedia extends IStrapiBase {
   };
 }
 
-export interface IStrapiSkill {
-  Name: string;
-  Proficiency: string;
-  Logo: {
+export type TStrapiSkill = {
+  name: string;
+  proficiency: string;
+  logo: {
     data: IStrapiMedia
   };
 }
 
 export interface IStrapiCMS extends IStrapiBase {
   attributes: {
-    CMS: IStrapiSkill;
+    cms: IStrapiSkill;
   }
 }
 
-export interface IStrapiFramework extends IStrapiBase {
+export interface IStrapiSkill extends IStrapiBase {
   attributes: {
-    Skill: IStrapiSkill;
+    skill: TStrapiSkill;
   }
 }
 
 export interface IStrapiJob extends IStrapiBase {
   attributes: {
-    Company: {
+    id: number;
+    company: {
       id: number;
-      Name: string;
-      Location: string;
-      Logo: {
+      name: string;
+      location: string;
+      logo: {
         data: IStrapiMedia;
-      }
+      };
+      url: string;
     };
-    Description: string;
-    StartDate: string;
-    EndDate?: string;
-    Title: string;
+    description: string;
+    startDate: string;
+    endDate?: string;
+    title: string;
+  }
+}
+
+export interface IStrapiResume extends IStrapiBase {
+  attributes: {
+    bio: string;
+    icon: {
+      data: IStrapiMedia;
+    }
+    information: {
+      currentlocation: string;
+      email: string;
+      firstname: string;
+      id: number;
+      lastname: string;
+      phonenumber: string;
+      profession: string;
+    };
+    metadata: {
+      description: string;
+      title: string;
+      id: number;
+    }[];
+  }
+}
+
+export interface IStrapiConfig extends IStrapiBase {
+  attributes: {
+    theme: TTheme;
+  }
+}
+
+export interface IStrapiSocial extends IStrapiBase {
+  attributes: {
+    name: string;
+    url: string;
+    icon: {
+      data: IStrapiMedia;
+    };
   }
 }
