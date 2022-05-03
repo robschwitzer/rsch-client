@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import { fetchAPI, getStrapiProperty } from "strapi";
 
 import Contact from "components/Resume/Contact";
@@ -7,6 +8,7 @@ import Section from "components/Resume/Section";
 import SkillSection from "components/Resume/SkillSection";
 import Job from "components/Resume/Job";
 import Interest from "components/Resume/Interest";
+import TimelineItem from "components/Resume/TimelineItem";
 
 import type { GetStaticProps } from "next";
 import type {
@@ -19,10 +21,6 @@ import type {
   IStrapiSkill,
   IStrapiSocial,
 } from "types/strapi";
-import TimelineItem from "components/Resume/TimelineItem";
-import Image from "next/image";
-
-// TODO: these types are going to give you grief due to the Logo munging that you do in getStaticProps
 interface Props {
   education: IStrapiSchool["attributes"]["school"][];
   interests: IStrapiInterest["attributes"][];
@@ -103,7 +101,8 @@ function Resume({
     >
       <Head>
         <title>{metadata.title}</title>
-        <meta property={`og:title`} content={"Rob Schwitzer - Resume"} />
+        <meta property={`og:title`} content={metadata.title} />
+        <meta property={`og:description`} content={metadata.description} />
         <meta property={`og:image`} content={metadata.image.data.attributes.url} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
