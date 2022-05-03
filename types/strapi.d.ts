@@ -156,3 +156,24 @@ export interface IStrapiSocial extends IStrapiBase {
     };
   }
 }
+
+export interface IStrapiSchool extends IStrapiBase {
+  attributes: {
+    school: {
+      id: number;
+      achievement: string;
+      name: string;
+      // url: string;
+      endDate?: string;
+      logo: IStrapiMedia["attributes"]
+    }
+  }
+}
+
+export interface IStrapiInterest extends IStrapiBase {
+  attributes: {
+    icon: string;
+    name: string;
+  }
+}
+

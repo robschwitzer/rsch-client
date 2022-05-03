@@ -35,26 +35,26 @@ function Contact({ icon, information, socials }: Props) {
   ));
 
   return (
-    <section className="flex flex-row items-center justify-between text-sky-50 md:text-3xl text-lg font-sans gap-12">
+    <section className={`flex flex-row items-center justify-between md:text-3xl text-lg font-sans gap-12 text-sky-50`}>
       <div className="flex flex-col py-8">
         <div className="flex flex-row gap-2 md:text-5xl text-3xl font-extrabold">
           <h1>{firstname}</h1>
           <h1>{lastname}</h1>
         </div>
 
-        <div className="flex flex-col md:flex-row md:gap-4 my-2 text-slate-500">
+        <div className={`flex flex-col md:flex-row md:gap-4 my-2 text-slate-500`}>
           <h1>{profession}</h1>
-          <Separator height={6} />
+          <span className={`hidden md:flex w-px h-6 self-center bg-rose-400`} />
           <h1>{currentlocation}</h1>
         </div>
 
         <div className="flex flex-col-reverse md:flex-row w-full md:items-center md:justify-evenly gap-2 md:gap-4 md:self-end text-lg font-extrabold">
           <div className="flex gap-4">{socialLinks}</div>
-          <a href={`mailto:${email}`}>
+          <a className="hover:scale-105 transition-all underline" href={`mailto:${email}`}>
             <h3>{email}</h3>
           </a>
-          <Separator height={4} />
-          <a href={`callto:${phonenumber}`}>
+          <span className={`hidden md:flex w-px h-6 self-center bg-rose-400`} />
+          <a className="hover:scale-105 transition-all underline" href={`callto:${phonenumber}`}>
             <h3>{phonenumber}</h3>
           </a>
         </div>
@@ -70,14 +70,6 @@ function Contact({ icon, information, socials }: Props) {
         />
       </div>
     </section>
-  );
-}
-
-function Separator({ height }: { height: number }) {
-  return (
-    <span
-      className={`hidden md:flex w-px h-${height} self-center bg-rose-400`}
-    />
   );
 }
 
