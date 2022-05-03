@@ -304,5 +304,6 @@ export const getStaticProps: GetStaticProps = async () => {
         return social;
       }),
     },
+    revalidate: 60
   };
 };
