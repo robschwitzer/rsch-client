@@ -73,5 +73,5 @@ export function getStrapiProperty<T>(obj: any, key?: keyof T): any {
   if (key) {
     return obj.attributes[key] ?? "Doesn't Exist";
   }
-  return obj.attributes;
+  return obj?.attributes ?? null;
 }

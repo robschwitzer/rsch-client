@@ -137,7 +137,10 @@ export interface IStrapiResume extends IStrapiBase {
       description: string;
       title: string;
       id: number;
-    }[];
+      image: {
+        data: IStrapiMedia;
+      }
+    };
   }
 }
 

@@ -102,7 +102,9 @@ function Resume({
       className={`bg-slate-900 flex flex-col items-center min-h-screen pt-10 px-4`}
     >
       <Head>
-        <title>{metadata[0].title}</title>
+        <title>{metadata.title}</title>
+        <meta property={`og:title`} content={"Rob Schwitzer - Resume"} />
+        <meta property={`og:image`} content={metadata.image.data.attributes.url} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="w-full max-w-screen-md">
@@ -236,7 +238,15 @@ export const getStaticProps: GetStaticProps = async () => {
       },
     }),
     fetchAPI<{ data: IStrapiResume }>("/resume", {
-      populate: "*",
+      populate: {
+        information: "*",
+        metadata: {
+          populate: "*"
+        },
+        icon: {
+          populate: "*"
+        }
+      }
     }),
     fetchAPI<{ data: IStrapiSocial[] }>("/socials", {
       populate: "*",
@@ -261,6 +271,10 @@ export const getStaticProps: GetStaticProps = async () => {
       resume: {
         ...getStrapiProperty(resume),
         icon: getStrapiProperty(getStrapiProperty(resume, "icon").data),
+        metadata: {
+          ...getStrapiProperty(resume, "metadata")[0],
+          image: getStrapiProperty(resume, "metadata")[0].image
+        }
       },
       skills: {
         cms: cms.map((item) => {

@@ -12,13 +12,13 @@ function Skill(props: Props) {
     <div className="flex flex-col items-center gap-6">
       <div className="flex flex-row items-center self-start">
         <Image
-          className="flex drop-shadow-2xl rounded-md -hue-rotate-60"
+          className="flex drop-shadow-2xl rounded-md"
           src={props.logo.formats.thumbnail.url}
           alt={props.logo.alternativeText}
           height={props.logo.formats.thumbnail.height / 5}
           width={props.logo.formats.thumbnail.width / 5}
         />
-        <h1 className={`text-sky-50 whitespace-nowrap font-extrabold text-sm md:text-xl ml-2 antialiased`}>
+        <h1 className={`text-sky-50 whitespace-nowrap font-bold text-sm md:text-xl ml-2 antialiased`}>
           {props.name}
         </h1>
       </div>

@@ -7,8 +7,8 @@ interface Props {
 
 function SkillSection({ title, skills }: Props) {
   return (
-    <div className={`break-inside bg-gray-800 w-full overflow-hidden rounded-lg p-4 my-6 shadow-lg border-2 border-rose-400`}>
-      <h1 className={`text-slate-500 text-2xl mb-8 font-extrabold underline antialiased`}>{title}</h1>
+    <div className={`break-inside bg-slate-800 w-full overflow-hidden rounded-lg p-4 my-6 shadow-lg border-2 border-slate-700`}>
+      <h1 className={`text-rose-400 text-2xl mb-8 font-bold antialiased`}>{title}</h1>
       <div className="grid grid-cols-2 gap-4 md:gap-8">
         {skills.sort((a, b) => b.proficiency - a.proficiency).map((item) => (
           <Skill
