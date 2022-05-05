@@ -76,21 +76,27 @@ function Resume({
     />
   ));
 
-  const educationList = education.map((school, i) => (
-    <TimelineItem
-      key={school.id}
-      date={`${
-        school.endDate
-          ? new Date(school.endDate).getFullYear()
-          : "Currently Enrolled"
-      } - ${school.achievement}`}
-      description={school.description}
-      image={school.logo}
-      isLast={i === education.length - 1}
-      title={school.name}
-      url={school.url}
-    />
-  ));
+  const educationList = education
+    .sort((a, b) =>
+      new Date(a.endDate ?? new Date()) < new Date(b.endDate ?? new Date())
+        ? 1
+        : -1
+    )
+    .map((school, i) => (
+      <TimelineItem
+        key={school.id}
+        date={`${
+          school.endDate
+            ? new Date(school.endDate).getFullYear()
+            : "Currently Enrolled"
+        } - ${school.achievement}`}
+        description={school.description}
+        image={school.logo}
+        isLast={i === education.length - 1}
+        title={school.name}
+        url={school.url}
+      />
+    ));
 
   const interestsList = interests.map(({ icon, name }) => (
     <Interest key={name} icon={icon} title={name} />
@@ -113,8 +119,10 @@ function Resume({
 
       <div className="w-full max-w-screen-md">
         <Contact icon={icon} information={information} socials={socials} />
-
-        <Blurb blurb={blurb1} />
+        
+        <Section my={0}>
+          <Blurb blurb={blurb1} />
+        </Section>
 
         <Section title={"Experience"}>{jobsList}</Section>
 
@@ -124,12 +132,13 @@ function Resume({
 
         <Section title={"Education"}>{educationList}</Section>
 
+        <Section>
+          {blurb2 && <Blurb blurb={blurb2} />}
+        </Section>
+
         <Section title={"Interests"}>
           <div className="flex flex-row flex-wrap w-5/6">{interestsList}</div>
         </Section>
-
-        {blurb2 && <Blurb blurb={blurb2} />}
-
         <Footer />
       </div>
     </div>
