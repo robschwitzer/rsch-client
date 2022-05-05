@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import type { IStrapiMedia, IStrapiResume, IStrapiSocial } from "types/strapi";
 
@@ -22,27 +21,33 @@ function Contact({ icon, information, socials }: Props) {
   } = information;
 
   const socialLinks = socials.map((social) => (
-    <Link key={social.url} passHref href={social.url}>
-      <a className="hover:scale-105 transition-all">
-        <Image
-          alt={social.icon.alternativeText}
-          src={social.icon.url}
-          height={40}
-          width={40}
-        />
-      </a>
-    </Link>
+    <a
+      key={social.url}
+      href={social.url}
+      className="hover:scale-105 transition-all"
+    >
+      <Image
+        alt={social.icon.alternativeText}
+        src={social.icon.url}
+        height={40}
+        width={40}
+      />
+    </a>
   ));
 
   return (
-    <section className={`flex flex-row items-center justify-between md:text-3xl text-lg font-sans gap-12 text-sky-50`}>
+    <section
+      className={`flex flex-row items-center justify-between md:text-3xl text-lg font-sans gap-12 text-sky-50`}
+    >
       <div className="flex flex-col py-8">
         <div className="flex flex-row gap-2 md:text-5xl text-3xl font-extrabold">
           <h1>{firstname}</h1>
           <h1>{lastname}</h1>
         </div>
 
-        <div className={`flex flex-col md:flex-row md:gap-4 my-2 text-slate-500`}>
+        <div
+          className={`flex flex-col md:flex-row md:gap-4 my-2 text-slate-500`}
+        >
           <h1>{profession}</h1>
           <span className={`hidden md:flex w-px h-6 self-center bg-rose-400`} />
           <h1>{currentlocation}</h1>
@@ -50,11 +55,17 @@ function Contact({ icon, information, socials }: Props) {
 
         <div className="flex flex-col-reverse md:flex-row w-full md:items-center md:justify-evenly gap-2 md:gap-4 md:self-end text-lg font-extrabold">
           <div className="flex gap-4">{socialLinks}</div>
-          <a className="hover:scale-105 transition-all underline" href={`mailto:${email}`}>
+          <a
+            className="hover:scale-105 transition-all underline"
+            href={`mailto:${email}`}
+          >
             <h3>{email}</h3>
           </a>
           <span className={`hidden md:flex w-px h-6 self-center bg-rose-400`} />
-          <a className="hover:scale-105 transition-all underline" href={`callto:${phonenumber}`}>
+          <a
+            className="hover:scale-105 transition-all underline"
+            href={`callto:${phonenumber}`}
+          >
             <h3>{phonenumber}</h3>
           </a>
         </div>

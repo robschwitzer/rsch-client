@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import type { IStrapiMedia } from "types/strapi";
 
@@ -12,27 +11,20 @@ interface Props {
   url: string;
 }
 
-function TimelineItem({
-  description,
-  date,
-  image,
-  isLast,
-  title,
-  url,
-}: Props) {
+function TimelineItem({ description, date, image, isLast, title, url }: Props) {
   return (
     <section className="flex flex-row w-full p-8 pb-0 pt-0">
       {/* logo & timeline */}
       <div className="flex flex-col items-center">
         <div className="flex flex-shrink-0 rounded-full h-14 w-14 overflow-hidden object-center hover:scale-105 transition-all border-2 border-rose-400">
-            <a href={url}>
-              <Image
-                alt={image.alternativeText}
-                src={image.url}
-                height={56}
-                width={56}
-              />
-            </a>
+          <a href={url}>
+            <Image
+              alt={image.alternativeText}
+              src={image.url}
+              height={56}
+              width={56}
+            />
+          </a>
         </div>
         {!isLast && <span className="w-px bg-rose-400 h-full" />}
       </div>

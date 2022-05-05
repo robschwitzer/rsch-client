@@ -18,7 +18,9 @@ function Skill(props: Props) {
           height={props.logo.formats.thumbnail.height / 5}
           width={props.logo.formats.thumbnail.width / 5}
         />
-        <h1 className={`text-sky-50 whitespace-nowrap font-bold text-sm md:text-xl ml-2 antialiased`}>
+        <h1
+          className={`text-sky-50 whitespace-nowrap font-bold text-sm md:text-xl ml-2 antialiased`}
+        >
           {props.name}
         </h1>
       </div>
