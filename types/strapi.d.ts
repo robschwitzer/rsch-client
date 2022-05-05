@@ -120,7 +120,8 @@ export interface IStrapiJob extends IStrapiBase {
 
 export interface IStrapiResume extends IStrapiBase {
   attributes: {
-    bio: string;
+    blurb1: string;
+    blurb2?: string;
     icon: {
       data: IStrapiMedia;
     }
@@ -165,8 +166,9 @@ export interface IStrapiSchool extends IStrapiBase {
     school: {
       id: number;
       achievement: string;
+      description: string;
       name: string;
-      // url: string;
+      url: string;
       endDate?: string;
       logo: IStrapiMedia["attributes"]
     }

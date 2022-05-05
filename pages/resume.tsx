@@ -1,14 +1,14 @@
 import Head from "next/head";
-import Image from "next/image";
 import { fetchAPI, getStrapiProperty } from "strapi";
 
 import Contact from "components/Resume/Contact";
-import Bio from "components/Resume/Bio";
+import Blurb from "components/Resume/Blurb";
 import Section from "components/Resume/Section";
 import SkillSection from "components/Resume/SkillSection";
 import Job from "components/Resume/Job";
 import Interest from "components/Resume/Interest";
 import TimelineItem from "components/Resume/TimelineItem";
+import Footer from "components/Footer";
 
 import type { GetStaticProps } from "next";
 import type {
@@ -21,6 +21,7 @@ import type {
   IStrapiSkill,
   IStrapiSocial,
 } from "types/strapi";
+
 interface Props {
   education: IStrapiSchool["attributes"]["school"][];
   interests: IStrapiInterest["attributes"][];
@@ -47,7 +48,7 @@ function Resume({
   skills,
   socials,
 }: Props) {
-  const { bio, icon, information, metadata } = resume;
+  const { blurb1, blurb2, icon, information, metadata } = resume;
   const { cms, databases, frameworks, languages } = skills;
 
   const jobsList = jobs
@@ -103,65 +104,33 @@ function Resume({
         <title>{metadata.title}</title>
         <meta property={`og:title`} content={metadata.title} />
         <meta property={`og:description`} content={metadata.description} />
-        <meta property={`og:image`} content={metadata.image.data.attributes.url} />
+        <meta
+          property={`og:image`}
+          content={metadata.image.data.attributes.url}
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <div className="w-full max-w-screen-md">
         <Contact icon={icon} information={information} socials={socials} />
-        <Bio bio={bio} />
+
+        <Blurb blurb={blurb1} />
+
         <Section title={"Experience"}>{jobsList}</Section>
+
         <Section title={"Skills"}>
           <div className="masonry md:masonry-md mb-8">{skillsList}</div>
         </Section>
+
         <Section title={"Education"}>{educationList}</Section>
+
+        {blurb2 && <Blurb blurb={blurb2} />}
+
         <Section title={"Interests"}>
           <div className="flex flex-row flex-wrap w-5/6">{interestsList}</div>
         </Section>
 
-        <footer className="flex flex-col">
-          <span className={`w-full h-px bg-slate-800 shadow-md mt-12 mb-20`} />
-          <p className={`text-sky-50 text-lg text-center antialiased`}>
-            Made with ❤️ using{" "}
-            <a href={"https://nextjs.org/"} className="underline">
-              NextJS
-            </a>
-            ,{" "}
-            <a href={"https://tailwindcss.com/"} className="underline">
-              Tailwind
-            </a>
-            , and{" "}
-            <a href={"https://strapi.io/"} className="underline">
-              Strapi
-            </a>
-            .
-            <br />
-            Icons from{" "}
-            <a href={"https://icon-icons.com/"} className="underline">
-              Icons-Icons
-            </a>
-            .
-            <br />
-          </p>
-          <p className={`flex justify-center text-sky-50 text-lg text-center antialiased`}>
-              Check out the code on Github{" "}
-              <a href="https://github.com/robschwitzer/rsch-client">
-                {/* eslint-disable-next-line */}
-                <img
-                  alt="Github"
-                  src="https://res.cloudinary.com/dnayvt2gf/image/upload/v1651165490/thumbnail_github_f09fb8187e.png"
-                  className="h-8 w-8 ml-2"
-                />
-              </a>
-            </p>
-          <div className="flex justify-center">
-            <Image
-              alt="byeee"
-              src={`https://res.cloudinary.com/dnayvt2gf/image/upload/v1651537870/memoji-bye_eeferd.png`}
-              height={200}
-              width={200}
-            />
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );
@@ -240,12 +209,12 @@ export const getStaticProps: GetStaticProps = async () => {
       populate: {
         information: "*",
         metadata: {
-          populate: "*"
+          populate: "*",
         },
         icon: {
-          populate: "*"
-        }
-      }
+          populate: "*",
+        },
+      },
     }),
     fetchAPI<{ data: IStrapiSocial[] }>("/socials", {
       populate: "*",
@@ -272,8 +241,8 @@ export const getStaticProps: GetStaticProps = async () => {
         icon: getStrapiProperty(getStrapiProperty(resume, "icon").data),
         metadata: {
           ...getStrapiProperty(resume, "metadata")[0],
-          image: getStrapiProperty(resume, "metadata")[0].image
-        }
+          image: getStrapiProperty(resume, "metadata")[0].image,
+        },
       },
       skills: {
         cms: cms.map((item) => {
@@ -303,6 +272,6 @@ export const getStaticProps: GetStaticProps = async () => {
         return social;
       }),
     },
-    revalidate: 60
+    revalidate: 60,
   };
 };
