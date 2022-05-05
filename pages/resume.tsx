@@ -83,12 +83,12 @@ function Resume({
         school.endDate
           ? new Date(school.endDate).getFullYear()
           : "Currently Enrolled"
-      }`}
-      description={school.achievement}
+      } - ${school.achievement}`}
+      description={school.description}
       image={school.logo}
       isLast={i === education.length - 1}
       title={school.name}
-      url=""
+      url={school.url}
     />
   ));
 
@@ -124,11 +124,11 @@ function Resume({
 
         <Section title={"Education"}>{educationList}</Section>
 
-        {blurb2 && <Blurb blurb={blurb2} />}
-
         <Section title={"Interests"}>
           <div className="flex flex-row flex-wrap w-5/6">{interestsList}</div>
         </Section>
+
+        {blurb2 && <Blurb blurb={blurb2} />}
 
         <Footer />
       </div>
