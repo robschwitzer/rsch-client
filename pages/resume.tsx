@@ -120,7 +120,7 @@ function Resume({
       <div className="w-full max-w-screen-md">
         <Contact icon={icon} information={information} socials={socials} />
         
-        <Section my={0}>
+        <Section className="my-12">
           <Blurb blurb={blurb1} />
         </Section>
 

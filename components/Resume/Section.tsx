@@ -1,12 +1,12 @@
 interface Props {
   title?: string;
   children: any;
-  my?: number
+  className?: string
 }
 
-function Section({ title, children, my }: Props) {
+function Section({ title, children, className }: Props) {
   return (
-    <section className={`my-${my ?? 12}`}>
+    <section className={`${className ?? `my-12`}`}>
       {title && <h1 className={`md:text-5xl text-3xl font-extrabold text-sky-50 mb-8`}>{title}</h1>}
       {children}
     </section>
