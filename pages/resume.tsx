@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { fetchAPI, getStrapiProperty } from "strapi";
 
+import Layout, { InnerContainer } from "components/Layout";
 import Contact from "components/Resume/Contact";
 import Blurb from "components/Resume/Blurb";
 import Section from "components/Resume/Section";
@@ -103,9 +104,7 @@ function Resume({
   ));
 
   return (
-    <div
-      className={`bg-slate-900 flex flex-col items-center min-h-screen pt-10 px-4`}
-    >
+    <Layout>
       <Head>
         <title>{metadata.title}</title>
         <meta property={`og:title`} content={metadata.title} />
@@ -117,7 +116,7 @@ function Resume({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="w-full max-w-screen-md">
+      <InnerContainer>
         <Contact icon={icon} information={information} socials={socials} />
         
         <Section className="my-0">
@@ -140,8 +139,8 @@ function Resume({
           <div className="flex flex-row flex-wrap w-5/6">{interestsList}</div>
         </Section>
         <Footer />
-      </div>
-    </div>
+      </InnerContainer>
+    </Layout>
   );
 }
 

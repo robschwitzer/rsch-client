@@ -27,9 +27,9 @@ function Footer() {
         <br />
       </p>
       <p
-        className={`flex justify-center text-sky-50 text-lg text-center antialiased`}
+        className={`flex justify-center text-sky-50 text-lg text-center items-center antialiased`}
       >
-        Check out the code on Github{" "}
+        Check out the code on {" "}
         <a href="https://github.com/robschwitzer/rsch-client">
           {/* eslint-disable-next-line */}
           <img
