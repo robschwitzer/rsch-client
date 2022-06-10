@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Loading from "./Loading";
 import Footer from "components/Footer";
 
 import type {
@@ -19,6 +20,7 @@ export interface ILetterProps {
 }
 
 function Letter({ publishedAt, company, letter, resume }: ILetterProps) {
+  const loading = !letter || !company;
   const publishedDate = new Date(publishedAt);
 
   const date = `${publishedDate.toLocaleString("default", {
@@ -27,7 +29,7 @@ function Letter({ publishedAt, company, letter, resume }: ILetterProps) {
     day: "numeric",
   })}, ${publishedDate.getFullYear()}`;
 
-  if (!letter || !company) return null;
+  if (loading) return <Loading />;
 
   return (
     <div className="md:mt-6 w-full">
