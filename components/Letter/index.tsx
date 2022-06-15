@@ -29,34 +29,43 @@ function Letter({ publishedAt, company, letter, resume }: ILetterProps) {
     day: "numeric",
   })}, ${publishedDate.getFullYear()}`;
 
-  if (loading) return <Loading />;
 
   return (
-    <div className="md:mt-6 w-full">
-      <>
-        <div className={styles.baseLetterHeader}>
-          <p className={`${styles.baseText} whitespace-pre-wrap`}>
-            {letter.from}
-          </p>
-          <Link href="/resume" passHref>
-            <Image
-              className="hover:scale-105 hover:rotate-2 transition-all cursor-pointer"
-              alt={resume.icon.alternativeText}
-              src={resume.icon.url}
-              height={140}
-              width={140}
-              objectFit="contain"
-            />
-          </Link>
-        </div>
+    <div className="md:mt-6">
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <div className={styles.baseLetterHeader}>
+            <p className={`${styles.baseText} whitespace-pre-wrap`}>
+              {letter.from}
+            </p>
+            <Link href="/resume" passHref>
+              <div className="h-24 w-24 rounded-full bg-sky-900 border-2 border-rose-400">
+                <Image
+                  className="hover:scale-105 hover:rotate-2 transition-all -translate-x-1 cursor-pointer"
+                  alt={resume.icon.alternativeText}
+                  src={resume.icon.url}
+                  height={140}
+                  width={140}
+                  objectFit="contain"
+                />
+              </div>
+            </Link>
+          </div>
 
-        <p className={`${styles.baseText} my-8`}>{date}</p>
+          <p className={`${styles.baseText} my-8`}>{date}</p>
 
-        <div className={styles.baseLetterHeader}>
-          <p className={`${styles.baseText} whitespace-pre-wrap`}>
-            {letter.to}
-          </p>
-            <a className="flex -rotate-2 rounded-md overflow-hidden hover:scale-105 hover:rotate-0 transition-all" href={company.url} target="blank" rel="noreferrer noopener">
+          <div className={styles.baseLetterHeader}>
+            <p className={`${styles.baseText} whitespace-pre-wrap`}>
+              {letter.to}
+            </p>
+            <a
+              className="flex -rotate-2 rounded-md overflow-hidden hover:scale-105 hover:rotate-0 transition-all"
+              href={company.url}
+              rel="noreferrer noopener"
+              target="blank"
+            >
               <Image
                 alt={company.logo.data.attributes.alternativeText}
                 src={company.logo.data.attributes.url}
@@ -65,13 +74,13 @@ function Letter({ publishedAt, company, letter, resume }: ILetterProps) {
                 objectFit="contain"
               />
             </a>
-        </div>
-      </>
-
-      <p className={`${styles.baseText} my-12 whitespace-pre-line`}>
-        {letter.body}
-      </p>
-      <Footer />
+          </div>
+          <p className={`${styles.baseText} my-12 whitespace-pre-line`}>
+            {letter.body}
+          </p>
+          <Footer />
+        </>
+      )}
     </div>
   );
 }
@@ -79,6 +88,6 @@ function Letter({ publishedAt, company, letter, resume }: ILetterProps) {
 export default Letter;
 
 const styles: { [key: string]: string } = {
-  baseText: `text-xl text-slate-50 antialiased`,
+  baseText: `text-xl text-slate-50`,
   baseLetterHeader: `flex flex-row justify-between items-center`,
 };

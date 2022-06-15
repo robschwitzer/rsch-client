@@ -3,13 +3,11 @@ import ContentLoader from "react-content-loader";
 
 function Loading() {
   return (
-    <div className="md:mt-6 w-full">
-      <ContentLoader height={"93vh"} width="100vw">
-        {loader1()}
-        <rect x="0" y="185" rx="4" ry="4" width="300" height="20" />
-        {loader2()}
-      </ContentLoader>
-    </div>
+    <ContentLoader height={"93vh"}>
+      {loader1()}
+      <rect x="0" y="185" rx="4" ry="4" width="300" height="20" />
+      {loader2()}
+    </ContentLoader>
   );
 }
 
