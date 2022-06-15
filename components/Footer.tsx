@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="flex flex-col">
       <span className={`w-full h-px bg-slate-800 shadow-md mt-12 mb-20`} />
-      <p className={`text-sky-50 text-lg text-center antialiased`}>
+      <p className={`text-slate-900 dark:text-sky-50 text-lg text-center antialiased`}>
         Made with ❤️ using{" "}
         <a href={"https://nextjs.org/"} className="underline">
           NextJS
@@ -27,9 +27,9 @@ function Footer() {
         <br />
       </p>
       <p
-        className={`flex justify-center text-sky-50 text-lg text-center antialiased`}
+        className={`flex justify-center text-slate-900 dark:text-sky-50 text-lg text-center items-center antialiased`}
       >
-        Check out the code on Github{" "}
+        Check out the code on {" "}
         <a href="https://github.com/robschwitzer/rsch-client">
           {/* eslint-disable-next-line */}
           <img
