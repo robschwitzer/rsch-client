@@ -37,7 +37,7 @@ function Contact({ icon, information, socials }: Props) {
 
   return (
     <section
-      className={`flex flex-row items-center justify-between md:text-3xl text-lg font-sans gap-12 text-sky-50`}
+      className={`flex flex-row items-center justify-between md:text-3xl text-lg font-sans gap-12 text-slate-900 dark:text-sky-50`}
     >
       <div className="flex flex-col py-8">
         <div className="flex flex-row gap-2 md:text-5xl text-3xl font-extrabold">

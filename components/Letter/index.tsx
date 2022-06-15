@@ -29,7 +29,6 @@ function Letter({ publishedAt, company, letter, resume }: ILetterProps) {
     day: "numeric",
   })}, ${publishedDate.getFullYear()}`;
 
-
   return (
     <div className="md:mt-6">
       {loading ? (
@@ -41,7 +40,7 @@ function Letter({ publishedAt, company, letter, resume }: ILetterProps) {
               {letter.from}
             </p>
             <Link href="/resume" passHref>
-              <div className="h-24 w-24 rounded-full bg-sky-900 border-2 border-rose-400">
+              <div className="h-24 w-24 rounded-full bg-slate-300 dark:bg-sky-900 border-2 border-rose-400">
                 <Image
                   className="hover:scale-105 hover:rotate-2 transition-all -translate-x-1 cursor-pointer"
                   alt={resume.icon.alternativeText}
@@ -88,6 +87,6 @@ function Letter({ publishedAt, company, letter, resume }: ILetterProps) {
 export default Letter;
 
 const styles: { [key: string]: string } = {
-  baseText: `text-xl text-slate-50`,
+  baseText: `text-xl text-slate-900 dark:text-slate-50`,
   baseLetterHeader: `flex flex-row justify-between items-center`,
 };

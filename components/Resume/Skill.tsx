@@ -19,7 +19,7 @@ function Skill(props: Props) {
           width={props.logo.formats.thumbnail.width / 5}
         />
         <h1
-          className={`text-sky-50 whitespace-nowrap font-bold text-sm md:text-xl ml-2 antialiased`}
+          className={`text-slate-900 dark:text-sky-50 whitespace-nowrap font-bold text-sm md:text-xl ml-2 antialiased`}
         >
           {props.name}
         </h1>
@@ -33,7 +33,7 @@ function ProficiencyBar({ fill }: { fill: number }) {
   return (
     <div className={`w-full h-1 rounded-md bg-slate-900`}>
       <span
-        className={`flex h-full rounded bg-sky-50 drop-shadow-lg`}
+        className={`flex h-full rounded bg-rose-400 dark:bg-sky-50 drop-shadow-lg transition-all`}
         style={{ width: `${fill * 10}%` }}
       />
     </div>

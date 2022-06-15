@@ -32,13 +32,13 @@ function TimelineItem({ description, date, image, isLast, title, url }: Props) {
       {/* info */}
       <div className="w-full h-full ml-4">
         {/* title and dates */}
-        <div className="gap-2 text-xl text-sky-50 mr-4">
+        <div className="gap-2 text-xl text-slate-900 dark:text-sky-50 mr-4">
           <h2 className="text-sm text-slate-500 font-extrabold whitespace-nowrap">
             {date}
           </h2>
           <h1 className="mb-4">{title}</h1>
         </div>
-        <p className="mb-6 text-neutral-100">{description}</p>
+        <p className="mb-6 text-slate-900 dark:text-neutral-100">{description}</p>
       </div>
     </section>
   );
