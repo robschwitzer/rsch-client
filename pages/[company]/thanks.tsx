@@ -21,7 +21,7 @@ function Thanks(props: ILetterProps) {
         }
       })
     }
-  }, [props.company.name]);
+  }, [props.company?.name]);
 
   return (
     <Layout>      

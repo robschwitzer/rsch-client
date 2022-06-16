@@ -1,8 +1,17 @@
-export const pageview = (page_path: string): void => {
+const isProduction = (): boolean => process.env.NODE_ENV === 'production';
+
+const prodOnly = (fn: Function): Function => (args: any): void => {
+  if (isProduction()) {    
+    return fn(args);
+  }  
+  return undefined;
+}
+
+export const pageview = prodOnly((page_path: string): void => {  
   window.gtag("config", process.env.NEXT_PUBLIC_GA_ID, {
     page_path,
   });
-};
+});
 
 interface TEventArgs {
   action: string;
@@ -10,6 +19,6 @@ interface TEventArgs {
     [key: string]: any;
   };
 }
-export const event = ({ action, params }: TEventArgs): void => {
+export const event = prodOnly(({ action, params }: TEventArgs): void => {
   window.gtag("event", action, params);
-};
+});
