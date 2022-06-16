@@ -25,10 +25,10 @@ function useToggleDarkmode(ref: RefObject<HTMLInputElement>) {
 
   const toggle = useCallback(() => {
     const html = document.getElementsByTagName("html")[0];
-    const className = html.className === ("dark" || "") ? "light" : "dark";
-    setTheme(className);
-    localStorage.theme = className;
-    html.className = className;
+    const theme = html.className === ("dark" || "") ? "light" : "dark";
+    setTheme(theme);
+    localStorage.theme = theme;
+    html.className = theme;
   }, []);
 
   return { toggle, isDarkmode: theme === "dark" };

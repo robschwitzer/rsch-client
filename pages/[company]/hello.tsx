@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 
 import Layout, { InnerContainer } from "components/Layout";
 import Letter, { ILetterProps } from "components/Letter";
@@ -10,6 +11,9 @@ import type { IStrapiApplication, IStrapiResume } from "types/strapi";
 function Hello(props: ILetterProps) {
   return (
     <Layout>
+      <Head>
+        <title>Rob Schwitzer Cover Letter</title>
+      </Head>
       <InnerContainer>
         <Letter {...props} />
       </InnerContainer>
