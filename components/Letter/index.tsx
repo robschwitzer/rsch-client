@@ -1,8 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Markdown from "react-markdown";
 import Loading from "./Loading";
 import Footer from "components/Footer";
+import components from "components/Markdown";
 
 import type {
   IStrapiApplication,
@@ -36,9 +38,9 @@ function Letter({ publishedAt, company, letter, resume }: ILetterProps) {
       ) : (
         <>
           <div className={styles.baseLetterHeader}>
-            <p className={`${styles.baseText} whitespace-pre-wrap`}>
+            <Markdown components={components} className={`${styles.baseText} whitespace-pre-wrap`}>
               {letter.from}
-            </p>
+            </Markdown>
             <Link href="/resume" passHref>
               <div className="h-24 w-24 rounded-full bg-slate-300 dark:bg-sky-900 border-2 border-rose-400">
                 <Image
@@ -56,9 +58,9 @@ function Letter({ publishedAt, company, letter, resume }: ILetterProps) {
           <p className={`${styles.baseText} my-8`}>{date}</p>
 
           <div className={styles.baseLetterHeader}>
-            <p className={`${styles.baseText} whitespace-pre-wrap`}>
+            <Markdown components={components} className={`${styles.baseText} whitespace-pre-wrap`}>
               {letter.to}
-            </p>
+            </Markdown>
             <a
               className="flex -rotate-2 rounded-md overflow-hidden hover:scale-105 hover:rotate-0 transition-all"
               href={company.url}
@@ -74,9 +76,9 @@ function Letter({ publishedAt, company, letter, resume }: ILetterProps) {
               />
             </a>
           </div>
-          <p className={`${styles.baseText} my-12 whitespace-pre-line`}>
+          <Markdown components={components} className={`${styles.baseText} my-12 whitespace-pre-line`}>
             {letter.body}
-          </p>
+          </Markdown>
           <Footer />
         </>
       )}
