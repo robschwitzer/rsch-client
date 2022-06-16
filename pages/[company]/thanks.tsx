@@ -1,15 +1,28 @@
-import React from "react";
+import { useEffect } from "react";
 import Head from "next/head";
 
 import Layout, { InnerContainer } from "components/Layout";
 import Letter, { ILetterProps } from "components/Letter";
 import { fetchAPI, getStrapiProperty } from "strapi";
+import { event } from "lib/analytics";
 import { getStaticPaths as _getStaticPaths } from "./hello";
 
 import type { GetStaticPaths, GetStaticProps } from "next";
 import type { IStrapiApplication, IStrapiResume } from "types/strapi";
 
 function Thanks(props: ILetterProps) {
+  useEffect(() => {
+    if (props.company?.name) {
+      /* GA */
+      event({
+        action: '+page_view',
+        params: {
+          page: `${props.company.name} Follow Up`
+        }
+      })
+    }
+  }, [props.company.name]);
+
   return (
     <Layout>      
       <Head>

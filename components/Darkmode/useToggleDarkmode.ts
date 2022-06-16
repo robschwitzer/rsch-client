@@ -1,10 +1,11 @@
 import { RefObject, useCallback, useEffect, useState } from "react";
+import { event } from "lib/analytics";
 
 /**
  * - localStorage is used to persist the theme across reloads
  * - ref.current.checked is used to change switch UI
  * - theme state is used to display appropriate label in parent
- * 
+ *
  * @param ref - controls `checked` property
  * @returns {toggle, isDarkmode}
  */
@@ -19,7 +20,7 @@ function useToggleDarkmode(ref: RefObject<HTMLInputElement>) {
       return document.documentElement.classList.add(localStorage.theme);
     } else {
       localStorage.theme = "dark";
-      return document.documentElement.classList.add("dark")
+      return document.documentElement.classList.add("dark");
     }
   }, [ref]);
 
@@ -29,6 +30,14 @@ function useToggleDarkmode(ref: RefObject<HTMLInputElement>) {
     setTheme(theme);
     localStorage.theme = theme;
     html.className = theme;
+
+    /* GA */
+    event({
+      action: "toggle_darkmode",
+      params: {
+        preferredTheme: theme,
+      },
+    });
   }, []);
 
   return { toggle, isDarkmode: theme === "dark" };
