@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { event } from "lib/analytics";
 
 import type { IStrapiMedia, IStrapiResume, IStrapiSocial } from "types/strapi";
 
@@ -20,10 +21,21 @@ function Contact({ icon, information, socials }: Props) {
     profession,
   } = information;
 
+  function onClick(item: string) {
+    /* GA */
+    event({
+      action: "click_contact_item",
+      params: {
+        item,
+      },
+    });
+  }
+
   const socialLinks = socials.map((social) => (
     <a
       key={social.url}
       href={social.url}
+      onClick={() => onClick(social.name)}
       className="hover:scale-105 transition-all"
     >
       <Image
@@ -56,6 +68,7 @@ function Contact({ icon, information, socials }: Props) {
         <div className="flex flex-col-reverse md:flex-row w-full md:items-center md:justify-evenly gap-2 md:gap-4 md:self-end text-lg font-extrabold">
           <div className="flex gap-4">{socialLinks}</div>
           <a
+            onClick={() => onClick("email")}
             className="hover:scale-105 transition-all underline"
             href={`mailto:${email}`}
           >
@@ -63,6 +76,7 @@ function Contact({ icon, information, socials }: Props) {
           </a>
           <span className={`hidden md:flex w-px h-6 self-center bg-rose-400`} />
           <a
+            onClick={() => onClick("phone-number")}
             className="hover:scale-105 transition-all underline"
             href={`callto:${phonenumber}`}
           >

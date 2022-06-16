@@ -1,14 +1,27 @@
-import React from "react";
+import { useEffect } from "react";
 import Head from "next/head";
 
 import Layout, { InnerContainer } from "components/Layout";
 import Letter, { ILetterProps } from "components/Letter";
+import { event } from "lib/analytics";
 import { fetchAPI, getStrapiProperty } from "strapi";
 
 import type { GetStaticPaths, GetStaticProps } from "next";
 import type { IStrapiApplication, IStrapiResume } from "types/strapi";
 
 function Hello(props: ILetterProps) {
+  useEffect(() => {
+    if (props.company?.name) {
+      /* GA */
+      event({
+        action: '+page_view',
+        params: {
+          page: `${props.company.name} Cover Letter`
+        }
+      })
+    }
+  }, [props.company.name]);
+
   return (
     <Layout>
       <Head>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { event } from "lib/analytics";
 
 import type { IStrapiMedia } from "types/strapi";
 
@@ -12,12 +13,22 @@ interface Props {
 }
 
 function TimelineItem({ description, date, image, isLast, title, url }: Props) {
+  function onClick(): void {
+    /* GA */
+    event({
+      action: 'click_timeline_item',
+      params: {
+        item: title
+      }
+    })
+  }
+
   return (
     <section className="flex flex-row w-full p-8 pb-0 pt-0">
       {/* logo & timeline */}
       <div className="flex flex-col items-center">
         <div className="flex flex-shrink-0 rounded-full h-14 w-14 overflow-hidden object-center hover:scale-105 transition-all border-2 border-rose-400">
-          <a href={url}>
+          <a onClick={onClick} href={url}>
             <Image
               alt={image.alternativeText}
               src={image.url}

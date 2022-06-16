@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import styles from "./style.module.css";
 
-import useToggleDarkmode from "lib/useToggleDarkmode";
+import useToggleDarkmode from "./useToggleDarkmode";
 
 /** @me - using css modules because of tailwind limitations with pseudo elements/selectors. Perhaps take a look if there is a solution for this in TW */
 
