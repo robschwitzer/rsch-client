@@ -1,5 +1,7 @@
 import React from "react";
-import Darkmode from "./Darkmode";
+import dynamic from "next/dynamic";
+
+const Darkmode = dynamic(() => import("./Darkmode"), { ssr: false });
 
 interface Props {
   children: any;
