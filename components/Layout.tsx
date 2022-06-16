@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Switch from "./Switch";
 
 import useToggleDarkmode from "lib/useToggleDarkmode";
@@ -17,11 +17,14 @@ function Layout({ children }: Props) {
 }
 
 export function InnerContainer({ children }: Props) {
-  const { toggle } = useToggleDarkmode();
+  const ref = useRef<HTMLInputElement>(null); 
+  const { toggle, isDarkmode } = useToggleDarkmode(ref);
+
   return (
     <div className="w-full max-w-screen-md">
-      <div className="flex place-content-end h-12 mr-6">
-        <Switch onClick={toggle} />
+      <div className="flex flex-row place-content-end items-start mr-2 mb-4 md:mb-0">
+        <p className="mr-4 text-xl text-center">{isDarkmode ? "🌙" : "☀️"}</p>
+        <Switch switchRef={ref} onClick={toggle} />
       </div>
       {children}
     </div>

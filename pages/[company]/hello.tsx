@@ -88,6 +88,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // @ts-ignore might be extending strapi base incorrectly...
   const publishedAt = letter[0].attributes.publishedAt;
 
+  if (!letter) {
+    return {
+      notFound: true
+    }
+  }
+
   return {
     props: {
       resume: {
