@@ -10,7 +10,7 @@ function Darkmode() {
   const { toggle, isDarkmode } = useToggleDarkmode(ref);
 
   return (
-    <div className="flex flex-row place-content-end items-start mr-2 mb-4 md:mb-0">
+    <div className="print:hidden flex flex-row place-content-end items-start mr-2 mb-4 md:mb-0">
       <p className="mr-4 text-xl text-center">{isDarkmode ? "🌙" : "☀️"}</p>
       <div className={styles.toggleSwitch}>
         <label className={styles.label}>
