@@ -5,7 +5,7 @@ import { RefObject, useCallback, useEffect, useState } from "react";
  * - ref.current.checked is used to change switch UI
  * - theme state is used to display appropriate label in parent
  * 
- * @param ref - used to control `checked` property
+ * @param ref - controls `checked` property
  * @returns {toggle, isDarkmode}
  */
 
