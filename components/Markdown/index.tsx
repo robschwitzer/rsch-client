@@ -1,5 +1,5 @@
 const components = {
-  a(props: any) {    
+  a(props: any) {        
     return <a className="underline" {...props} />
   }
 }
