@@ -66,7 +66,7 @@ function Contact({ icon, information, socials }: Props) {
         </div>
 
         <div className="flex flex-col-reverse md:flex-row w-full md:items-center md:justify-evenly gap-2 md:gap-4 md:self-end text-lg font-extrabold">
-          <div className="flex gap-4">{socialLinks}</div>
+          <div className="print:hidden flex gap-4">{socialLinks}</div>
           <a
             onClick={() => onClick("email")}
             className="hover:scale-105 transition-all underline"

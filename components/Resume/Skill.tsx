@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { IStrapiSkill } from "types/strapi";
 
 interface Props {
@@ -30,11 +31,17 @@ function Skill(props: Props) {
 }
 
 function ProficiencyBar({ fill }: { fill: number }) {
+  const [width, setWidth] = useState<string | number>(0);
+
+  useEffect(() => {
+    setWidth(`${fill * 10}%`);
+  }, [fill]);
+  
   return (
-    <div className={`w-full h-1 rounded-md bg-slate-900`}>
+    <div className={`flex w-full h-1 rounded-md bg-slate-900 print:h-2 print:border-2`}>
       <span
         className={`flex h-full rounded bg-rose-400 dark:bg-sky-50 drop-shadow-lg transition-all`}
-        style={{ width: `${fill * 10}%` }}
+        style={{ width }}
       />
     </div>
   );

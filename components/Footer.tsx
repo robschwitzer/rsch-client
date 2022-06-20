@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function Footer() {
   return (
-    <footer className="flex flex-col">
+    <footer className="print:hidden flex flex-col">
       <span className={`w-full h-px bg-slate-800 shadow-md mt-12 mb-20`} />
       <p className={`text-slate-900 dark:text-sky-50 text-lg text-center antialiased`}>
         Made with ❤️ using{" "}

@@ -8,7 +8,7 @@ interface Props {
 function SkillSection({ title, skills }: Props) {
   return (
     <div
-      className={`break-inside dark:bg-slate-800 w-full overflow-hidden rounded-lg p-4 mb-6 shadow-lg border-2 border-slate-700`}
+      className={`break-inside dark:bg-slate-800 w-full overflow-hidden rounded-lg p-4 mb-6 shadow-lg border-2 border-slate-700 print:shadow-none`}
     >
       <h1 className={`dark:text-rose-400 text-2xl mb-8 font-bold antialiased`}>
         {title}
