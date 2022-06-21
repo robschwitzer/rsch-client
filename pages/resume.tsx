@@ -123,9 +123,9 @@ function Resume({
           <Blurb blurb={blurb1} />
         </Section>
 
-        <Section className="my-12 print:break-after-page" title={"Experience"}>{jobsList}</Section>
+        <Section className="my-12 print:mb-0" title={"Experience"}>{jobsList}</Section>
 
-        <Section title={"Skills"}>
+        <Section className="my-12 print:mt-2" title={"Skills"}>
           <div className="masonry md:masonry-md mb-8">{skillsList}</div>
         </Section>
 
