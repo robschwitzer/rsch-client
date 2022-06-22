@@ -40,7 +40,7 @@ function ProficiencyBar({ fill }: { fill: number }) {
   return (
     <div className={`flex w-full h-1 rounded-md bg-slate-900 print:h-2 print:border-2`}>
       <span
-        className={`flex h-full rounded bg-rose-400 dark:bg-sky-50 drop-shadow-lg transition-all`}
+        className={`flex h-full rounded bg-rose-400 dark:bg-sky-50 print:border-2 print:border-rose-400 drop-shadow-lg transition-all`}
         style={{ width }}
       />
     </div>

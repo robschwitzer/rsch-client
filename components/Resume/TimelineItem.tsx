@@ -37,7 +37,7 @@ function TimelineItem({ description, date, image, isLast, title, url }: Props) {
             />
           </a>
         </div>
-        {!isLast && <span className="w-px bg-rose-400 h-full" />}
+        {!isLast && <span className="w-px bg-rose-400 print:shadow-rose-400 print:shadow-inner h-full" />}
       </div>
 
       {/* info */}
