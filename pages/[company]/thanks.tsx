@@ -75,7 +75,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         company: {
           populate: "*",
         },
-        coverletter: {
+        followup: {
           populate: "*",
         },
       },
