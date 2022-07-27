@@ -14,7 +14,7 @@ function Hello(props: ILetterProps) {
     if (props.company?.name) {
       /* GA */
       event({
-        action: '+page_view',
+        action: `+${props.company.name} - CL`,
         params: {
           page: `${props.company.name} Cover Letter`
         }

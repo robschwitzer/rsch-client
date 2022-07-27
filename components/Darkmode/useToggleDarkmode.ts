@@ -11,7 +11,7 @@ import { event } from "lib/analytics";
  */
 
 function useToggleDarkmode(ref: RefObject<HTMLInputElement>) {
-  const [theme, setTheme] = useState<"light" | "dark" | "">("dark");
+  const [theme, setTheme] = useState<"light" | "dark" | "">("light");
 
   useEffect(() => {
     if (localStorage.theme) {
@@ -19,8 +19,8 @@ function useToggleDarkmode(ref: RefObject<HTMLInputElement>) {
       if (ref.current) ref.current.checked = localStorage.theme === "light";
       return document.documentElement.classList.add(localStorage.theme);
     } else {
-      localStorage.theme = "dark";
-      return document.documentElement.classList.add("dark");
+      localStorage.theme = "light";
+      return document.documentElement.classList.add("light");
     }
   }, [ref]);
 

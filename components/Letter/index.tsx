@@ -89,6 +89,6 @@ function Letter({ publishedAt, company, letter, resume }: ILetterProps) {
 export default Letter;
 
 const styles: { [key: string]: string } = {
-  baseText: `text-xl text-slate-900 dark:text-slate-50`,
+  baseText: `text-xl text-slate-900 dark:text-slate-50 dark:print:text-slate-900`,
   baseLetterHeader: `flex flex-row justify-between items-center`,
 };
